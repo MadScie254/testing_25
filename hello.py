@@ -25,6 +25,7 @@ async def main():
         "https://api.github.com",
         "https://api.github.com/users/MadScie254",
         "https://api.github.com/users/octocat",
+        "https://httpbin.org/get",
     ]
 
     async with aiohttp.ClientSession() as session:
