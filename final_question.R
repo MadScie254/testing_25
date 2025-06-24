@@ -1,41 +1,68 @@
-# R script to Analyze student substance data
-# install necessary lib
+# R Script to Analyze Student Substance Data
+
+# Install and load necessary packages if they are not already installed.
+# The 'dplyr' and 'tidyr' packages are used for data manipulation, particularly for question 9.
+if (!require("dplyr")) install.packages("dplyr")
+if (!require("tidyr")) install.packages("tidyr")
+
 library(dplyr)
 library(tidyr)
 
+# Set the working directory to the location of your CSV file, or ensure the CSV is in your current working directory.
+# For example: setwd("C:/Users/YourUser/Documents/")
+
+# Load the dataset from the CSV file.
+# The 'check.names=TRUE' argument ensures that column names are syntactically valid variable names in R,
+# which often involves replacing spaces and special characters with dots.
 student_data <- read.csv("StudentsSubstancesData.csv", check.names = TRUE)
 
-# Question 1
-cat("--- Question 1: Dataset Dimension ---\n")
-num_variables <= ncol(student_data)
+# --------------------------------------------------------------------------------------------------
+
+# Question 1: How many variables and cases does the dataset have?
+cat("--- Question 1: Dataset Dimensions ---\n")
+num_variables <- ncol(student_data)
 num_cases <- nrow(student_data)
-cat("Number of Variables (columns):", num_variables, "\n")
+cat("Number of variables (columns):", num_variables, "\n")
 cat("Number of cases (rows):", num_cases, "\n\n")
 
-# Question 2
+# --------------------------------------------------------------------------------------------------
+
+# Question 2: The file contains real survey data captured from CUK students. How many of the students were Males and how many were females?
 cat("--- Question 2: Gender Distribution ---\n")
 gender_counts <- table(student_data$Gender)
 print(gender_counts)
 cat("\n")
 
-# Question 3
-cat("--- Question 3: Percentage of Undergraduate ---\n")
+# --------------------------------------------------------------------------------------------------
+
+# Question 3: What percentage of the students were taking Undergraduate degrees?
+cat("--- Question 3: Percentage of Undergraduate Students ---\n")
 academic_level_percent <- prop.table(table(student_data$Academic.Level)) * 100
+cat("Percentage of students in each academic level:\n")
 print(academic_level_percent)
 cat("\n")
 
-# Question 4
-cat("--- Question 4: Percentage of Females among undergradutes ---\n")
+# --------------------------------------------------------------------------------------------------
+
+# Question 4: What percentage of the Undergraduate students were females?
+cat("--- Question 4: Percentage of Females among Undergraduates ---\n")
 undergraduates <- subset(student_data, Academic.Level == "Undergraduate")
 undergrad_gender_percent <- prop.table(table(undergraduates$Gender)) * 100
-cat("Percentage of gender among Undergraduate students:\n")
+cat("Percentage of genders among Undergraduate students:\n")
+print(undergrad_gender_percent)
 cat("\n")
 
-# Question 5
+# --------------------------------------------------------------------------------------------------
+
+# Question 5: Where do the male students mostly reside while in session? (Give the percentage)
 cat("--- Question 5: Male Student Residence (In Session) ---\n")
 male_students <- subset(student_data, Gender == "Male")
 male_residence_percent <- prop.table(table(male_students$Residence..In.Session.)) * 100
+cat("Percentage distribution of residence for male students (in session):\n")
 print(sort(male_residence_percent, decreasing = TRUE))
+cat("\n")
+
+# --------------------------------------------------------------------------------------------------
 
 # Question 6
 # Question 6: While not in session, what percentage of the students stayed with both parents?
