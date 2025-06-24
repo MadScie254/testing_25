@@ -33,7 +33,7 @@ gender_counts <- table(student_data$Gender)
 print(gender_counts)
 cat("\n")
 
-# --------------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------_
 
 # Question 3: What percentage of the students were taking Undergraduate degrees?
 cat("--- Question 3: Percentage of Undergraduate Students ---\n")
