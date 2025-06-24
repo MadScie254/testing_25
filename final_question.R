@@ -37,7 +37,7 @@ male_students <- subset(student_data, Gender == "Male")
 male_residence_percent <- prop.table(table(male_students$Residence..In.Session.)) * 100
 print(sort(male_residence_percent, decreasing = TRUE))
 
-# Question 6
+
 # Question 6: While not in session, what percentage of the students stayed with both parents?
 cat("--- Question 6: Residence with Both Parents (Out of Session) ---\n")
 out_of_session_residence_percent <- prop.table(table(student_data$Residence..Out.of.Session.)) * 100
