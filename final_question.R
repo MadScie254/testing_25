@@ -8,9 +8,6 @@ if (!require("tidyr")) install.packages("tidyr")
 library(dplyr)
 library(tidyr)
 
-# Set the working directory to the location of your CSV file, or ensure the CSV is in your current working directory.
-# For example: setwd("C:/Users/YourUser/Documents/")
-
 # Load the dataset from the CSV file.
 # The 'check.names=TRUE' argument ensures that column names are syntactically valid variable names in R,
 # which often involves replacing spaces and special characters with dots.
